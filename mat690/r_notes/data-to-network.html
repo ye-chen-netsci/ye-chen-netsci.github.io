@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Data to network | _main.utf8</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Data to network | _main.utf8" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Data to network | _main.utf8" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-igraph-package.html"/>
+<link rel="next" href="introduction-to-r-markdown.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html"><i class="fa fa-check"></i><b>1</b> Basic Functions in R</a><ul>
+<li class="chapter" data-level="1.1" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html#basic-operations"><i class="fa fa-check"></i><b>1.1</b> Basic operations</a></li>
+<li class="chapter" data-level="1.2" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html#value-comparisons"><i class="fa fa-check"></i><b>1.2</b> Value comparisons</a></li>
+<li class="chapter" data-level="1.3" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html#special-constants"><i class="fa fa-check"></i><b>1.3</b> Special constants</a></li>
+<li class="chapter" data-level="1.4" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html#vectors"><i class="fa fa-check"></i><b>1.4</b> Vectors</a></li>
+<li class="chapter" data-level="1.5" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html#factors"><i class="fa fa-check"></i><b>1.5</b> Factors</a></li>
+<li class="chapter" data-level="1.6" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html#matrices-arrays"><i class="fa fa-check"></i><b>1.6</b> Matrices &amp; Arrays</a></li>
+<li class="chapter" data-level="1.7" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html#lists"><i class="fa fa-check"></i><b>1.7</b> Lists</a></li>
+<li class="chapter" data-level="1.8" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html#data-frames"><i class="fa fa-check"></i><b>1.8</b> Data Frames</a></li>
+<li class="chapter" data-level="1.9" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html#flow-control"><i class="fa fa-check"></i><b>1.9</b> Flow Control</a></li>
+<li class="chapter" data-level="1.10" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html#r-plots-and-colors"><i class="fa fa-check"></i><b>1.10</b> R plots and colors</a></li>
+<li class="chapter" data-level="1.11" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html#r-troubleshooting"><i class="fa fa-check"></i><b>1.11</b> R troubleshooting</a></li>
+<li class="chapter" data-level="1.12" data-path="basic-functions-in-r.html"><a href="basic-functions-in-r.html#homework-1---part-1"><i class="fa fa-check"></i><b>1.12</b> Homework 1 - part 1</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-igraph-package.html"><a href="introduction-to-igraph-package.html"><i class="fa fa-check"></i><b>2</b> Introduction to igraph package</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-igraph-package.html"><a href="introduction-to-igraph-package.html#create-networks"><i class="fa fa-check"></i><b>2.1</b> Create networks</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-igraph-package.html"><a href="introduction-to-igraph-package.html#edge-vertex-and-network-attributes"><i class="fa fa-check"></i><b>2.2</b> Edge, vertex, and network attributes</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-igraph-package.html"><a href="introduction-to-igraph-package.html#some-special-graphs."><i class="fa fa-check"></i><b>2.3</b> Some special graphs.</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-igraph-package.html"><a href="introduction-to-igraph-package.html#homework-1---part-2"><i class="fa fa-check"></i><b>2.4</b> Homework 1 - part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-to-network.html"><a href="data-to-network.html"><i class="fa fa-check"></i><b>3</b> Data to network</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-to-network.html"><a href="data-to-network.html#reading-network-data-from-files"><i class="fa fa-check"></i><b>3.1</b> Reading network data from files</a></li>
+<li class="chapter" data-level="3.2" data-path="data-to-network.html"><a href="data-to-network.html#turning-networks-into-igraph-objects"><i class="fa fa-check"></i><b>3.2</b> Turning networks into igraph objects</a></li>
+<li class="chapter" data-level="3.3" data-path="data-to-network.html"><a href="data-to-network.html#dataset-1"><i class="fa fa-check"></i><b>3.3</b> DATASET 1</a></li>
+<li class="chapter" data-level="3.4" data-path="data-to-network.html"><a href="data-to-network.html#dataset-2"><i class="fa fa-check"></i><b>3.4</b> DATASET 2</a></li>
+<li class="chapter" data-level="3.5" data-path="data-to-network.html"><a href="data-to-network.html#plot-parameters-in-igraph"><i class="fa fa-check"></i><b>3.5</b> Plot parameters in igraph</a></li>
+<li class="chapter" data-level="3.6" data-path="data-to-network.html"><a href="data-to-network.html#network-layouts"><i class="fa fa-check"></i><b>3.6</b> Network Layouts</a></li>
+<li class="chapter" data-level="3.7" data-path="data-to-network.html"><a href="data-to-network.html#homework-1---part-3"><i class="fa fa-check"></i><b>3.7</b> Homework 1 - part 3</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html"><i class="fa fa-check"></i><b>4</b> Introduction to R Markdown</a><ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#r-markdown-recources"><i class="fa fa-check"></i><b>4.1</b> R Markdown recources</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#a-simple-r-markdown-file"><i class="fa fa-check"></i><b>4.2</b> A simple R Markdown file</a></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#getting-started-with-equations"><i class="fa fa-check"></i><b>4.3</b> Getting started with equations</a></li>
+<li class="chapter" data-level="4.4" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#matrix-and-equations"><i class="fa fa-check"></i><b>4.4</b> Matrix and equations</a></li>
+<li class="chapter" data-level="4.5" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#statistics"><i class="fa fa-check"></i><b>4.5</b> Statistics</a></li>
+<li class="chapter" data-level="4.6" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#tables"><i class="fa fa-check"></i><b>4.6</b> Tables</a></li>
+<li class="chapter" data-level="4.7" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#create-gifs"><i class="fa fa-check"></i><b>4.7</b> Create GIFs</a></li>
+<li class="chapter" data-level="4.8" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#support-python-and-shell-script"><i class="fa fa-check"></i><b>4.8</b> Support Python and Shell script</a></li>
+<li class="chapter" data-level="4.9" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#homework-1---part-4"><i class="fa fa-check"></i><b>4.9</b> Homework 1 - part 4</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-to-network" class="section level1">
+<h1><span class="header-section-number">3</span> Data to network</h1>
+<div id="reading-network-data-from-files" class="section level2">
+<h2><span class="header-section-number">3.1</span> Reading network data from files</h2>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="data-to-network.html#cb253-1"></a><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>()) <span class="co"># clear the workspace again</span></span></code></pre></div>
+<p>Download the archive with the data files from <a href="http://bitly.com/netscix2016" class="uri">http://bitly.com/netscix2016</a></p>
+<p>Set the working directory to the folder containing the workshop files:</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="data-to-network.html#cb254-1"></a><span class="kw">setwd</span>(<span class="st">&quot;D:</span><span class="ch">\\</span><span class="st">markdown&quot;</span>) <span class="co"># use &#39;\\&#39; or &#39;/&#39; in  the directory</span></span></code></pre></div>
+<p>DATASET 1: edgelist</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="data-to-network.html#cb255-1"></a>nodes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Dataset1-Media-Example-NODES.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">as.is=</span>T)</span>
+<span id="cb255-2"><a href="data-to-network.html#cb255-2"></a>links &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Dataset1-Media-Example-EDGES.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">as.is=</span>T)</span></code></pre></div>
+<p>Examine the data:</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="data-to-network.html#cb256-1"></a><span class="kw">head</span>(nodes)</span></code></pre></div>
+<pre><code>##    id               media media.type type.label audience.size
+## 1 s01            NY Times          1  Newspaper            20
+## 2 s02     Washington Post          1  Newspaper            25
+## 3 s03 Wall Street Journal          1  Newspaper            30
+## 4 s04           USA Today          1  Newspaper            32
+## 5 s05            LA Times          1  Newspaper            20
+## 6 s06       New York Post          1  Newspaper            50</code></pre>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="data-to-network.html#cb258-1"></a><span class="kw">head</span>(links)</span></code></pre></div>
+<pre><code>##   from  to weight      type
+## 1  s01 s02     10 hyperlink
+## 2  s01 s02     12 hyperlink
+## 3  s01 s03     22 hyperlink
+## 4  s01 s04     21 hyperlink
+## 5  s04 s11     22   mention
+## 6  s05 s15     21   mention</code></pre>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="data-to-network.html#cb260-1"></a><span class="kw">nrow</span>(nodes); <span class="kw">length</span>(<span class="kw">unique</span>(nodes<span class="op">$</span>id))</span></code></pre></div>
+<pre><code>## [1] 17</code></pre>
+<pre><code>## [1] 17</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="data-to-network.html#cb263-1"></a><span class="kw">nrow</span>(links); <span class="kw">nrow</span>(<span class="kw">unique</span>(links[,<span class="kw">c</span>(<span class="st">&quot;from&quot;</span>, <span class="st">&quot;to&quot;</span>)]))</span></code></pre></div>
+<pre><code>## [1] 52</code></pre>
+<pre><code>## [1] 49</code></pre>
+<p>Collapse multiple links of the same type between the same two nodes
+by summing their weights, using aggregate() by “from”, “to”, &amp; “type”:
+(we don’t use “simplify()” here so as not to collapse different link types)</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="data-to-network.html#cb266-1"></a>links &lt;-<span class="st"> </span><span class="kw">aggregate</span>(links[,<span class="dv">3</span>], links[,<span class="op">-</span><span class="dv">3</span>], sum)</span>
+<span id="cb266-2"><a href="data-to-network.html#cb266-2"></a>links &lt;-<span class="st"> </span>links[<span class="kw">order</span>(links<span class="op">$</span>from, links<span class="op">$</span>to),]</span>
+<span id="cb266-3"><a href="data-to-network.html#cb266-3"></a><span class="kw">colnames</span>(links)[<span class="dv">4</span>] &lt;-<span class="st"> &quot;weight&quot;</span></span>
+<span id="cb266-4"><a href="data-to-network.html#cb266-4"></a><span class="kw">rownames</span>(links) &lt;-<span class="st"> </span><span class="ot">NULL</span></span></code></pre></div>
+<p>DATASET 2: matrix</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="data-to-network.html#cb267-1"></a>nodes2 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Dataset2-Media-User-Example-NODES.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">as.is=</span>T)</span>
+<span id="cb267-2"><a href="data-to-network.html#cb267-2"></a>links2 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Dataset2-Media-User-Example-EDGES.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">row.names=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>Examine the data:</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="data-to-network.html#cb268-1"></a><span class="kw">head</span>(nodes2)</span></code></pre></div>
+<pre><code>##    id   media media.type media.name audience.size
+## 1 s01     NYT          1  Newspaper            20
+## 2 s02    WaPo          1  Newspaper            25
+## 3 s03     WSJ          1  Newspaper            30
+## 4 s04    USAT          1  Newspaper            32
+## 5 s05 LATimes          1  Newspaper            20
+## 6 s06     CNN          2         TV            56</code></pre>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="data-to-network.html#cb270-1"></a><span class="kw">head</span>(links2)</span></code></pre></div>
+<pre><code>##     U01 U02 U03 U04 U05 U06 U07 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20
+## s01   1   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## s02   0   0   0   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   1
+## s03   0   0   0   0   0   1   1   1   1   0   0   0   0   0   0   0   0   0   0   0
+## s04   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0   0   0   0   0   0
+## s05   0   0   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0   0   0   0
+## s06   0   0   0   0   0   0   0   0   0   0   0   0   1   1   0   0   1   0   0   0</code></pre>
+<p>links2 is an adjacency matrix for a two-mode network:</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="data-to-network.html#cb272-1"></a>links2 &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(links2)</span>
+<span id="cb272-2"><a href="data-to-network.html#cb272-2"></a><span class="kw">dim</span>(links2)</span></code></pre></div>
+<pre><code>## [1] 10 20</code></pre>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="data-to-network.html#cb274-1"></a><span class="kw">dim</span>(nodes2)</span></code></pre></div>
+<pre><code>## [1] 30  5</code></pre>
+</div>
+<div id="turning-networks-into-igraph-objects" class="section level2">
+<h2><span class="header-section-number">3.2</span> Turning networks into igraph objects</h2>
+</div>
+<div id="dataset-1" class="section level2">
+<h2><span class="header-section-number">3.3</span> DATASET 1</h2>
+<p>Converting the data to an igraph object:
+The graph.data.frame function, which takes two data frames: ‘d’ and ‘vertices’.
+‘d’ describes the edges of the network - it should start with two columns
+containing the source and target node IDs for each network tie.
+‘vertices’ should start with a column of node IDs.
+Any additional columns in either data frame are interpreted as attributes.</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="data-to-network.html#cb276-1"></a><span class="kw">library</span>(igraph)</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="data-to-network.html#cb277-1"></a>net &lt;-<span class="st"> </span><span class="kw">graph_from_data_frame</span>(<span class="dt">d=</span>links, <span class="dt">vertices=</span>nodes, <span class="dt">directed=</span>T) </span></code></pre></div>
+<p>Examine the resulting object:</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="data-to-network.html#cb278-1"></a><span class="kw">class</span>(net)</span></code></pre></div>
+<pre><code>## [1] &quot;igraph&quot;</code></pre>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="data-to-network.html#cb280-1"></a>net </span></code></pre></div>
+<pre><code>## IGRAPH 3252186 DNW- 17 49 -- 
+## + attr: name (v/c), media (v/c), media.type (v/n), type.label (v/c), audience.size (v/n), type (e/c), weight (e/n)
+## + edges from 3252186 (vertex names):
+##  [1] s01-&gt;s02 s01-&gt;s03 s01-&gt;s04 s01-&gt;s15 s02-&gt;s01 s02-&gt;s03 s02-&gt;s09 s02-&gt;s10 s03-&gt;s01 s03-&gt;s04 s03-&gt;s05 s03-&gt;s08 s03-&gt;s10 s03-&gt;s11 s03-&gt;s12 s04-&gt;s03
+## [17] s04-&gt;s06 s04-&gt;s11 s04-&gt;s12 s04-&gt;s17 s05-&gt;s01 s05-&gt;s02 s05-&gt;s09 s05-&gt;s15 s06-&gt;s06 s06-&gt;s16 s06-&gt;s17 s07-&gt;s03 s07-&gt;s08 s07-&gt;s10 s07-&gt;s14 s08-&gt;s03
+## [33] s08-&gt;s07 s08-&gt;s09 s09-&gt;s10 s10-&gt;s03 s12-&gt;s06 s12-&gt;s13 s12-&gt;s14 s13-&gt;s12 s13-&gt;s17 s14-&gt;s11 s14-&gt;s13 s15-&gt;s01 s15-&gt;s04 s15-&gt;s06 s16-&gt;s06 s16-&gt;s17
+## [49] s17-&gt;s04</code></pre>
+<p>We can look at the nodes, edges, and their attributes:</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="data-to-network.html#cb282-1"></a><span class="kw">E</span>(net)</span></code></pre></div>
+<pre><code>## + 49/49 edges from 3252186 (vertex names):
+##  [1] s01-&gt;s02 s01-&gt;s03 s01-&gt;s04 s01-&gt;s15 s02-&gt;s01 s02-&gt;s03 s02-&gt;s09 s02-&gt;s10 s03-&gt;s01 s03-&gt;s04 s03-&gt;s05 s03-&gt;s08 s03-&gt;s10 s03-&gt;s11 s03-&gt;s12 s04-&gt;s03
+## [17] s04-&gt;s06 s04-&gt;s11 s04-&gt;s12 s04-&gt;s17 s05-&gt;s01 s05-&gt;s02 s05-&gt;s09 s05-&gt;s15 s06-&gt;s06 s06-&gt;s16 s06-&gt;s17 s07-&gt;s03 s07-&gt;s08 s07-&gt;s10 s07-&gt;s14 s08-&gt;s03
+## [33] s08-&gt;s07 s08-&gt;s09 s09-&gt;s10 s10-&gt;s03 s12-&gt;s06 s12-&gt;s13 s12-&gt;s14 s13-&gt;s12 s13-&gt;s17 s14-&gt;s11 s14-&gt;s13 s15-&gt;s01 s15-&gt;s04 s15-&gt;s06 s16-&gt;s06 s16-&gt;s17
+## [49] s17-&gt;s04</code></pre>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="data-to-network.html#cb284-1"></a><span class="kw">V</span>(net)</span></code></pre></div>
+<pre><code>## + 17/17 vertices, named, from 3252186:
+##  [1] s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 s11 s12 s13 s14 s15 s16 s17</code></pre>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="data-to-network.html#cb286-1"></a><span class="kw">E</span>(net)<span class="op">$</span>type</span></code></pre></div>
+<pre><code>##  [1] &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;mention&quot;   &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot;
+## [13] &quot;mention&quot;   &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;mention&quot;   &quot;mention&quot;   &quot;hyperlink&quot; &quot;mention&quot;   &quot;mention&quot;   &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;mention&quot;  
+## [25] &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;mention&quot;   &quot;mention&quot;   &quot;mention&quot;   &quot;hyperlink&quot; &quot;mention&quot;   &quot;hyperlink&quot; &quot;mention&quot;   &quot;mention&quot;   &quot;mention&quot;   &quot;hyperlink&quot;
+## [37] &quot;mention&quot;   &quot;hyperlink&quot; &quot;mention&quot;   &quot;hyperlink&quot; &quot;mention&quot;   &quot;mention&quot;   &quot;mention&quot;   &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;hyperlink&quot; &quot;mention&quot;  
+## [49] &quot;hyperlink&quot;</code></pre>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="data-to-network.html#cb288-1"></a><span class="kw">V</span>(net)<span class="op">$</span>media</span></code></pre></div>
+<pre><code>##  [1] &quot;NY Times&quot;            &quot;Washington Post&quot;     &quot;Wall Street Journal&quot; &quot;USA Today&quot;           &quot;LA Times&quot;            &quot;New York Post&quot;      
+##  [7] &quot;CNN&quot;                 &quot;MSNBC&quot;               &quot;FOX News&quot;            &quot;ABC&quot;                 &quot;BBC&quot;                 &quot;Yahoo News&quot;         
+## [13] &quot;Google News&quot;         &quot;Reuters.com&quot;         &quot;NYTimes.com&quot;         &quot;WashingtonPost.com&quot;  &quot;AOL.com&quot;</code></pre>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="data-to-network.html#cb290-1"></a><span class="kw">plot</span>(net, <span class="dt">edge.arrow.size=</span>.<span class="dv">4</span>,<span class="dt">vertex.label=</span><span class="ot">NA</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
+<p>Removing loops from the graph:</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="data-to-network.html#cb291-1"></a>net &lt;-<span class="st"> </span><span class="kw">simplify</span>(net, <span class="dt">remove.multiple =</span> F, <span class="dt">remove.loops =</span> T) </span></code></pre></div>
+<p>If you need them, you can extract an edge list or a matrix from igraph networks.</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="data-to-network.html#cb292-1"></a><span class="kw">as_edgelist</span>(net, <span class="dt">names=</span>T)</span></code></pre></div>
+<pre><code>##       [,1]  [,2] 
+##  [1,] &quot;s01&quot; &quot;s02&quot;
+##  [2,] &quot;s01&quot; &quot;s03&quot;
+##  [3,] &quot;s01&quot; &quot;s04&quot;
+##  [4,] &quot;s01&quot; &quot;s15&quot;
+##  [5,] &quot;s02&quot; &quot;s01&quot;
+##  [6,] &quot;s02&quot; &quot;s03&quot;
+##  [7,] &quot;s02&quot; &quot;s09&quot;
+##  [8,] &quot;s02&quot; &quot;s10&quot;
+##  [9,] &quot;s03&quot; &quot;s01&quot;
+## [10,] &quot;s03&quot; &quot;s04&quot;
+## [11,] &quot;s03&quot; &quot;s05&quot;
+## [12,] &quot;s03&quot; &quot;s08&quot;
+## [13,] &quot;s03&quot; &quot;s10&quot;
+## [14,] &quot;s03&quot; &quot;s11&quot;
+## [15,] &quot;s03&quot; &quot;s12&quot;
+## [16,] &quot;s04&quot; &quot;s03&quot;
+## [17,] &quot;s04&quot; &quot;s06&quot;
+## [18,] &quot;s04&quot; &quot;s11&quot;
+## [19,] &quot;s04&quot; &quot;s12&quot;
+## [20,] &quot;s04&quot; &quot;s17&quot;
+## [21,] &quot;s05&quot; &quot;s01&quot;
+## [22,] &quot;s05&quot; &quot;s02&quot;
+## [23,] &quot;s05&quot; &quot;s09&quot;
+## [24,] &quot;s05&quot; &quot;s15&quot;
+## [25,] &quot;s06&quot; &quot;s16&quot;
+## [26,] &quot;s06&quot; &quot;s17&quot;
+## [27,] &quot;s07&quot; &quot;s03&quot;
+## [28,] &quot;s07&quot; &quot;s08&quot;
+## [29,] &quot;s07&quot; &quot;s10&quot;
+## [30,] &quot;s07&quot; &quot;s14&quot;
+## [31,] &quot;s08&quot; &quot;s03&quot;
+## [32,] &quot;s08&quot; &quot;s07&quot;
+## [33,] &quot;s08&quot; &quot;s09&quot;
+## [34,] &quot;s09&quot; &quot;s10&quot;
+## [35,] &quot;s10&quot; &quot;s03&quot;
+## [36,] &quot;s12&quot; &quot;s06&quot;
+## [37,] &quot;s12&quot; &quot;s13&quot;
+## [38,] &quot;s12&quot; &quot;s14&quot;
+## [39,] &quot;s13&quot; &quot;s12&quot;
+## [40,] &quot;s13&quot; &quot;s17&quot;
+## [41,] &quot;s14&quot; &quot;s11&quot;
+## [42,] &quot;s14&quot; &quot;s13&quot;
+## [43,] &quot;s15&quot; &quot;s01&quot;
+## [44,] &quot;s15&quot; &quot;s04&quot;
+## [45,] &quot;s15&quot; &quot;s06&quot;
+## [46,] &quot;s16&quot; &quot;s06&quot;
+## [47,] &quot;s16&quot; &quot;s17&quot;
+## [48,] &quot;s17&quot; &quot;s04&quot;</code></pre>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="data-to-network.html#cb294-1"></a><span class="kw">as_adjacency_matrix</span>(net, <span class="dt">attr=</span><span class="st">&quot;weight&quot;</span>)</span></code></pre></div>
+<pre><code>## 17 x 17 sparse Matrix of class &quot;dgCMatrix&quot;</code></pre>
+<pre><code>##    [[ suppressing 17 column names &#39;s01&#39;, &#39;s02&#39;, &#39;s03&#39; ... ]]</code></pre>
+<pre><code>##                                                      
+## s01  . 22 22 21 .  .  .  .  .  .  .  .  .  . 20  .  .
+## s02 23  . 21  . .  .  .  .  1  5  .  .  .  .  .  .  .
+## s03 21  .  . 22 1  .  .  4  .  2  1  1  .  .  .  .  .
+## s04  .  . 23  . .  1  .  .  .  . 22  3  .  .  .  .  2
+## s05  1 21  .  . .  .  .  .  2  .  .  .  .  . 21  .  .
+## s06  .  .  .  . .  .  .  .  .  .  .  .  .  .  . 21 21
+## s07  .  .  1  . .  .  . 22  . 21  .  .  .  4  .  .  .
+## s08  .  .  2  . .  . 21  . 23  .  .  .  .  .  .  .  .
+## s09  .  .  .  . .  .  .  .  . 21  .  .  .  .  .  .  .
+## s10  .  .  2  . .  .  .  .  .  .  .  .  .  .  .  .  .
+## s11  .  .  .  . .  .  .  .  .  .  .  .  .  .  .  .  .
+## s12  .  .  .  . .  2  .  .  .  .  .  . 22 22  .  .  .
+## s13  .  .  .  . .  .  .  .  .  .  . 21  .  .  .  .  1
+## s14  .  .  .  . .  .  .  .  .  .  1  . 21  .  .  .  .
+## s15 22  .  .  1 .  4  .  .  .  .  .  .  .  .  .  .  .
+## s16  .  .  .  . . 23  .  .  .  .  .  .  .  .  .  . 21
+## s17  .  .  .  4 .  .  .  .  .  .  .  .  .  .  .  .  .</code></pre>
+<p>Or data frames describing nodes and edges:</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="data-to-network.html#cb298-1"></a><span class="kw">as_data_frame</span>(net, <span class="dt">what=</span><span class="st">&quot;edges&quot;</span>)</span></code></pre></div>
+<pre><code>##    from  to      type weight
+## 1   s01 s02 hyperlink     22
+## 2   s01 s03 hyperlink     22
+## 3   s01 s04 hyperlink     21
+## 4   s01 s15   mention     20
+## 5   s02 s01 hyperlink     23
+## 6   s02 s03 hyperlink     21
+## 7   s02 s09 hyperlink      1
+## 8   s02 s10 hyperlink      5
+## 9   s03 s01 hyperlink     21
+## 10  s03 s04 hyperlink     22
+## 11  s03 s05 hyperlink      1
+## 12  s03 s08 hyperlink      4
+## 13  s03 s10   mention      2
+## 14  s03 s11 hyperlink      1
+## 15  s03 s12 hyperlink      1
+## 16  s04 s03 hyperlink     23
+## 17  s04 s06   mention      1
+## 18  s04 s11   mention     22
+## 19  s04 s12 hyperlink      3
+## 20  s04 s17   mention      2
+## 21  s05 s01   mention      1
+## 22  s05 s02 hyperlink     21
+## 23  s05 s09 hyperlink      2
+## 24  s05 s15   mention     21
+## 25  s06 s16 hyperlink     21
+## 26  s06 s17   mention     21
+## 27  s07 s03   mention      1
+## 28  s07 s08   mention     22
+## 29  s07 s10 hyperlink     21
+## 30  s07 s14   mention      4
+## 31  s08 s03 hyperlink      2
+## 32  s08 s07   mention     21
+## 33  s08 s09   mention     23
+## 34  s09 s10   mention     21
+## 35  s10 s03 hyperlink      2
+## 36  s12 s06   mention      2
+## 37  s12 s13 hyperlink     22
+## 38  s12 s14   mention     22
+## 39  s13 s12 hyperlink     21
+## 40  s13 s17   mention      1
+## 41  s14 s11   mention      1
+## 42  s14 s13   mention     21
+## 43  s15 s01 hyperlink     22
+## 44  s15 s04 hyperlink      1
+## 45  s15 s06 hyperlink      4
+## 46  s16 s06 hyperlink     23
+## 47  s16 s17   mention     21
+## 48  s17 s04 hyperlink      4</code></pre>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="data-to-network.html#cb300-1"></a><span class="kw">as_data_frame</span>(net, <span class="dt">what=</span><span class="st">&quot;vertices&quot;</span>)</span></code></pre></div>
+<pre><code>##     name               media media.type type.label audience.size
+## s01  s01            NY Times          1  Newspaper            20
+## s02  s02     Washington Post          1  Newspaper            25
+## s03  s03 Wall Street Journal          1  Newspaper            30
+## s04  s04           USA Today          1  Newspaper            32
+## s05  s05            LA Times          1  Newspaper            20
+## s06  s06       New York Post          1  Newspaper            50
+## s07  s07                 CNN          2         TV            56
+## s08  s08               MSNBC          2         TV            34
+## s09  s09            FOX News          2         TV            60
+## s10  s10                 ABC          2         TV            23
+## s11  s11                 BBC          2         TV            34
+## s12  s12          Yahoo News          3     Online            33
+## s13  s13         Google News          3     Online            23
+## s14  s14         Reuters.com          3     Online            12
+## s15  s15         NYTimes.com          3     Online            24
+## s16  s16  WashingtonPost.com          3     Online            28
+## s17  s17             AOL.com          3     Online            33</code></pre>
+</div>
+<div id="dataset-2" class="section level2">
+<h2><span class="header-section-number">3.4</span> DATASET 2</h2>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="data-to-network.html#cb302-1"></a><span class="kw">head</span>(nodes2)</span></code></pre></div>
+<pre><code>##    id   media media.type media.name audience.size
+## 1 s01     NYT          1  Newspaper            20
+## 2 s02    WaPo          1  Newspaper            25
+## 3 s03     WSJ          1  Newspaper            30
+## 4 s04    USAT          1  Newspaper            32
+## 5 s05 LATimes          1  Newspaper            20
+## 6 s06     CNN          2         TV            56</code></pre>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="data-to-network.html#cb304-1"></a><span class="kw">head</span>(links2)</span></code></pre></div>
+<pre><code>##     U01 U02 U03 U04 U05 U06 U07 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20
+## s01   1   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## s02   0   0   0   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   1
+## s03   0   0   0   0   0   1   1   1   1   0   0   0   0   0   0   0   0   0   0   0
+## s04   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0   0   0   0   0   0
+## s05   0   0   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0   0   0   0
+## s06   0   0   0   0   0   0   0   0   0   0   0   0   1   1   0   0   1   0   0   0</code></pre>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="data-to-network.html#cb306-1"></a>net2 &lt;-<span class="st"> </span><span class="kw">graph_from_incidence_matrix</span>(links2)</span></code></pre></div>
+<p>A built-in vertex attribute ‘type’ shows which mode vertices belong to.</p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="data-to-network.html#cb307-1"></a><span class="kw">table</span>(<span class="kw">V</span>(net2)<span class="op">$</span>type)</span></code></pre></div>
+<pre><code>## 
+## FALSE  TRUE 
+##    10    20</code></pre>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="data-to-network.html#cb309-1"></a><span class="kw">plot</span>(net2,<span class="dt">vertex.label=</span><span class="ot">NA</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-184-1.png" width="672" /></p>
+<p>To transform a one-mode network matrix into an igraph object,
+use graph_from_adjacency_matrix()</p>
+<p>We can also easily generate bipartite projections for the two-mode network:
+(co-memberships are easy to calculate by multiplying the network matrix by
+its transposed matrix, or using igraph’s bipartite.projection function)</p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="data-to-network.html#cb310-1"></a>net2.bp &lt;-<span class="st"> </span><span class="kw">bipartite.projection</span>(net2)</span></code></pre></div>
+<p>We can calculate the projections manually as well:</p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="data-to-network.html#cb311-1"></a><span class="kw">as_incidence_matrix</span>(net2)  <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(<span class="kw">as_incidence_matrix</span>(net2))</span></code></pre></div>
+<pre><code>##     s01 s02 s03 s04 s05 s06 s07 s08 s09 s10
+## s01   3   0   0   0   0   0   0   0   0   1
+## s02   0   3   0   0   0   0   0   0   1   0
+## s03   0   0   4   1   0   0   0   0   1   0
+## s04   0   0   1   3   1   0   0   0   0   1
+## s05   0   0   0   1   3   1   0   0   0   1
+## s06   0   0   0   0   1   3   1   1   0   0
+## s07   0   0   0   0   0   1   3   1   0   0
+## s08   0   0   0   0   0   1   1   4   1   0
+## s09   0   1   1   0   0   0   0   1   3   0
+## s10   1   0   0   1   1   0   0   0   0   2</code></pre>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="data-to-network.html#cb313-1"></a> <span class="kw">t</span>(<span class="kw">as_incidence_matrix</span>(net2)) <span class="op">%*%</span><span class="st">   </span><span class="kw">as_incidence_matrix</span>(net2)</span></code></pre></div>
+<pre><code>##     U01 U02 U03 U04 U05 U06 U07 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20
+## U01   2   1   1   0   0   0   0   0   0   0   1   0   0   0   0   0   0   0   0   0
+## U02   1   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## U03   1   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## U04   0   0   0   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   1
+## U05   0   0   0   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   1
+## U06   0   0   0   0   0   2   1   1   1   0   0   0   0   0   0   0   0   0   1   1
+## U07   0   0   0   0   0   1   1   1   1   0   0   0   0   0   0   0   0   0   0   0
+## U08   0   0   0   0   0   1   1   1   1   0   0   0   0   0   0   0   0   0   0   0
+## U09   0   0   0   0   0   1   1   1   2   1   1   0   0   0   0   0   0   0   0   0
+## U10   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0   0   0   0   0   0
+## U11   1   0   0   0   0   0   0   0   1   1   3   1   1   0   0   0   0   0   0   0
+## U12   0   0   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0   0   0   0
+## U13   0   0   0   0   0   0   0   0   0   0   1   1   2   1   0   0   1   0   0   0
+## U14   0   0   0   0   0   0   0   0   0   0   0   0   1   2   1   1   1   0   0   0
+## U15   0   0   0   0   0   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0
+## U16   0   0   0   0   0   0   0   0   0   0   0   0   0   1   1   2   1   1   1   0
+## U17   0   0   0   0   0   0   0   0   0   0   0   0   1   1   0   1   2   1   1   0
+## U18   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   1   1   1   1   0
+## U19   0   0   0   0   0   1   0   0   0   0   0   0   0   0   0   1   1   1   2   1
+## U20   0   0   0   1   1   1   0   0   0   0   0   0   0   0   0   0   0   0   1   2</code></pre>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="data-to-network.html#cb315-1"></a><span class="kw">plot</span>(net2.bp<span class="op">$</span>proj1, <span class="dt">vertex.label.color=</span><span class="st">&quot;black&quot;</span>, <span class="dt">vertex.label.dist=</span><span class="dv">1</span>,</span>
+<span id="cb315-2"><a href="data-to-network.html#cb315-2"></a>     <span class="dt">vertex.label=</span>nodes2<span class="op">$</span>media[<span class="op">!</span><span class="kw">is.na</span>(nodes2<span class="op">$</span>media.type)])</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-187-1.png" width="672" /></p>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="data-to-network.html#cb316-1"></a><span class="kw">plot</span>(net2.bp<span class="op">$</span>proj2, <span class="dt">vertex.label.color=</span><span class="st">&quot;black&quot;</span>, <span class="dt">vertex.label.dist=</span><span class="dv">1</span>,</span>
+<span id="cb316-2"><a href="data-to-network.html#cb316-2"></a>     <span class="dt">vertex.label=</span>nodes2<span class="op">$</span>media[ <span class="kw">is.na</span>(nodes2<span class="op">$</span>media.type)])</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-188-1.png" width="672" /></p>
+</div>
+<div id="plot-parameters-in-igraph" class="section level2">
+<h2><span class="header-section-number">3.5</span> Plot parameters in igraph</h2>
+<p>Plotting with igraph: node options (starting with ‘vertex.’) and edge options
+(starting with ‘edge.’). A list of options is included in your handout.
+?igraph.plotting</p>
+<p>We can set the node &amp; edge options in two ways - one is to specify
+them in the plot() function, as we are doing below.</p>
+<p>Plot with curved edges (edge.curved=.1) and reduce arrow size:</p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="data-to-network.html#cb317-1"></a><span class="kw">plot</span>(net, <span class="dt">edge.arrow.size=</span>.<span class="dv">4</span>, <span class="dt">edge.curved=</span>.<span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-189-1.png" width="672" /></p>
+<p>Set node color to orange and the border color to hex #555555
+Replace the vertex label with the node names stored in “media”</p>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="data-to-network.html#cb318-1"></a><span class="kw">plot</span>(net, <span class="dt">edge.arrow.size=</span>.<span class="dv">2</span>, <span class="dt">edge.curved=</span><span class="dv">0</span>,</span>
+<span id="cb318-2"><a href="data-to-network.html#cb318-2"></a>     <span class="dt">vertex.color=</span><span class="st">&quot;orange&quot;</span>, <span class="dt">vertex.frame.color=</span><span class="st">&quot;#555555&quot;</span>,</span>
+<span id="cb318-3"><a href="data-to-network.html#cb318-3"></a>     <span class="dt">vertex.label=</span><span class="kw">V</span>(net)<span class="op">$</span>media, <span class="dt">vertex.label.color=</span><span class="st">&quot;black&quot;</span>,</span>
+<span id="cb318-4"><a href="data-to-network.html#cb318-4"></a>     <span class="dt">vertex.label.cex=</span>.<span class="dv">7</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-190-1.png" width="672" /></p>
+<p>The second way to set attributes is to add them to the igraph object.</p>
+<p>Generate colors based on media type:</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="data-to-network.html#cb319-1"></a>colrs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;gray50&quot;</span>, <span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;gold&quot;</span>)</span>
+<span id="cb319-2"><a href="data-to-network.html#cb319-2"></a><span class="kw">V</span>(net)<span class="op">$</span>color &lt;-<span class="st"> </span>colrs[<span class="kw">V</span>(net)<span class="op">$</span>media.type]</span></code></pre></div>
+<p>Set node size based on audience size:</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="data-to-network.html#cb320-1"></a><span class="kw">V</span>(net)<span class="op">$</span>size &lt;-<span class="st"> </span><span class="kw">V</span>(net)<span class="op">$</span>audience.size<span class="op">*</span><span class="fl">0.7</span></span></code></pre></div>
+<p>The labels are currently node IDs.
+Setting them to NA will render no labels:</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="data-to-network.html#cb321-1"></a><span class="kw">V</span>(net)<span class="op">$</span>label.color &lt;-<span class="st"> &quot;black&quot;</span></span>
+<span id="cb321-2"><a href="data-to-network.html#cb321-2"></a><span class="kw">V</span>(net)<span class="op">$</span>label &lt;-<span class="st"> </span><span class="ot">NA</span></span></code></pre></div>
+<p>Set edge width based on weight:</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="data-to-network.html#cb322-1"></a><span class="kw">E</span>(net)<span class="op">$</span>width &lt;-<span class="st"> </span><span class="kw">E</span>(net)<span class="op">$</span>weight<span class="op">/</span><span class="dv">6</span></span></code></pre></div>
+<p>change arrow size and edge color:</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="data-to-network.html#cb323-1"></a><span class="kw">E</span>(net)<span class="op">$</span>arrow.size &lt;-<span class="st"> </span><span class="fl">.2</span></span>
+<span id="cb323-2"><a href="data-to-network.html#cb323-2"></a><span class="kw">E</span>(net)<span class="op">$</span>edge.color &lt;-<span class="st"> &quot;gray80&quot;</span></span>
+<span id="cb323-3"><a href="data-to-network.html#cb323-3"></a></span>
+<span id="cb323-4"><a href="data-to-network.html#cb323-4"></a><span class="kw">plot</span>(net) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-195-1.png" width="672" /></p>
+<p>We can also override the attributes explicitly in the plot:</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="data-to-network.html#cb324-1"></a><span class="kw">plot</span>(net, <span class="dt">edge.color=</span><span class="st">&quot;orange&quot;</span>, <span class="dt">vertex.color=</span><span class="st">&quot;gray50&quot;</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-196-1.png" width="672" /></p>
+<p>We can also add a legend explaining the meaning of the colors we used:</p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="data-to-network.html#cb325-1"></a><span class="kw">plot</span>(net) </span>
+<span id="cb325-2"><a href="data-to-network.html#cb325-2"></a><span class="kw">legend</span>(<span class="dt">x=</span><span class="op">-</span><span class="fl">1.1</span>, <span class="dt">y=</span><span class="op">-</span><span class="fl">1.1</span>, <span class="kw">c</span>(<span class="st">&quot;Newspaper&quot;</span>,<span class="st">&quot;Television&quot;</span>, <span class="st">&quot;Online News&quot;</span>), <span class="dt">pch=</span><span class="dv">21</span>,</span>
+<span id="cb325-3"><a href="data-to-network.html#cb325-3"></a>       <span class="dt">col=</span><span class="st">&quot;#777777&quot;</span>, <span class="dt">pt.bg=</span>colrs, <span class="dt">pt.cex=</span><span class="fl">2.5</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-197-1.png" width="672" /></p>
+<p>Sometimes, especially with semantic networks, we may be interested in
+plotting only the labels of the nodes:</p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="data-to-network.html#cb326-1"></a><span class="kw">plot</span>(net, <span class="dt">vertex.shape=</span><span class="st">&quot;none&quot;</span>, <span class="dt">vertex.label=</span><span class="kw">V</span>(net)<span class="op">$</span>media, </span>
+<span id="cb326-2"><a href="data-to-network.html#cb326-2"></a>     <span class="dt">vertex.label.font=</span><span class="dv">2</span>, <span class="dt">vertex.label.color=</span><span class="st">&quot;gray40&quot;</span>,</span>
+<span id="cb326-3"><a href="data-to-network.html#cb326-3"></a>     <span class="dt">vertex.label.cex=</span>.<span class="dv">7</span>, <span class="dt">edge.color=</span><span class="st">&quot;gray85&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-198-1.png" width="672" /></p>
+<p>Let’s color the edges of the graph based on their source node color.
+We’ll get the starting node for each edge with “ends()”.</p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="data-to-network.html#cb327-1"></a>edge.start &lt;-<span class="st"> </span><span class="kw">ends</span>(net, <span class="dt">es=</span><span class="kw">E</span>(net), <span class="dt">names=</span>F)[,<span class="dv">1</span>]</span>
+<span id="cb327-2"><a href="data-to-network.html#cb327-2"></a>edge.col &lt;-<span class="st"> </span><span class="kw">V</span>(net)<span class="op">$</span>color[edge.start]</span>
+<span id="cb327-3"><a href="data-to-network.html#cb327-3"></a></span>
+<span id="cb327-4"><a href="data-to-network.html#cb327-4"></a><span class="kw">plot</span>(net, <span class="dt">edge.color=</span>edge.col, <span class="dt">edge.curved=</span>.<span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-199-1.png" width="672" /></p>
+</div>
+<div id="network-layouts" class="section level2">
+<h2><span class="header-section-number">3.6</span> Network Layouts</h2>
+<p>Network layouts are algorithms that return coordinates for each
+node in a network.</p>
+<p>Let’s generate a slightly larger 80-node graph.</p>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="data-to-network.html#cb328-1"></a>net.bg &lt;-<span class="st"> </span><span class="kw">sample_pa</span>(<span class="dv">80</span>, <span class="fl">1.2</span>) </span>
+<span id="cb328-2"><a href="data-to-network.html#cb328-2"></a><span class="kw">V</span>(net.bg)<span class="op">$</span>size &lt;-<span class="st"> </span><span class="dv">8</span></span>
+<span id="cb328-3"><a href="data-to-network.html#cb328-3"></a><span class="kw">V</span>(net.bg)<span class="op">$</span>frame.color &lt;-<span class="st"> &quot;white&quot;</span></span>
+<span id="cb328-4"><a href="data-to-network.html#cb328-4"></a><span class="kw">V</span>(net.bg)<span class="op">$</span>color &lt;-<span class="st"> &quot;orange&quot;</span></span>
+<span id="cb328-5"><a href="data-to-network.html#cb328-5"></a><span class="kw">V</span>(net.bg)<span class="op">$</span>label &lt;-<span class="st"> &quot;&quot;</span> </span>
+<span id="cb328-6"><a href="data-to-network.html#cb328-6"></a><span class="kw">E</span>(net.bg)<span class="op">$</span>arrow.mode &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb328-7"><a href="data-to-network.html#cb328-7"></a><span class="kw">plot</span>(net.bg)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-200-1.png" width="672" /></p>
+<p>You can set the layout in the plot function:</p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="data-to-network.html#cb329-1"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>layout_randomly)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-201-1.png" width="672" /></p>
+<p>Or calculate the vertex coordinates in advance:</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="data-to-network.html#cb330-1"></a>l &lt;-<span class="st"> </span><span class="kw">layout_in_circle</span>(net.bg)</span>
+<span id="cb330-2"><a href="data-to-network.html#cb330-2"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>l)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-202-1.png" width="672" /></p>
+<p>l is simply a matrix of x,y coordinates (N x 2) for the N nodes in the graph.
+You can generate your own:</p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="data-to-network.html#cb331-1"></a>l</span></code></pre></div>
+<pre><code>##                [,1]          [,2]
+##  [1,]  1.000000e+00  0.000000e+00
+##  [2,]  9.969173e-01  7.845910e-02
+##  [3,]  9.876883e-01  1.564345e-01
+##  [4,]  9.723699e-01  2.334454e-01
+##  [5,]  9.510565e-01  3.090170e-01
+##  [6,]  9.238795e-01  3.826834e-01
+##  [7,]  8.910065e-01  4.539905e-01
+##  [8,]  8.526402e-01  5.224986e-01
+##  [9,]  8.090170e-01  5.877853e-01
+## [10,]  7.604060e-01  6.494480e-01
+## [11,]  7.071068e-01  7.071068e-01
+## [12,]  6.494480e-01  7.604060e-01
+## [13,]  5.877853e-01  8.090170e-01
+## [14,]  5.224986e-01  8.526402e-01
+## [15,]  4.539905e-01  8.910065e-01
+## [16,]  3.826834e-01  9.238795e-01
+## [17,]  3.090170e-01  9.510565e-01
+## [18,]  2.334454e-01  9.723699e-01
+## [19,]  1.564345e-01  9.876883e-01
+## [20,]  7.845910e-02  9.969173e-01
+## [21,]  6.123032e-17  1.000000e+00
+## [22,] -7.845910e-02  9.969173e-01
+## [23,] -1.564345e-01  9.876883e-01
+## [24,] -2.334454e-01  9.723699e-01
+## [25,] -3.090170e-01  9.510565e-01
+## [26,] -3.826834e-01  9.238795e-01
+## [27,] -4.539905e-01  8.910065e-01
+## [28,] -5.224986e-01  8.526402e-01
+## [29,] -5.877853e-01  8.090170e-01
+## [30,] -6.494480e-01  7.604060e-01
+## [31,] -7.071068e-01  7.071068e-01
+## [32,] -7.604060e-01  6.494480e-01
+## [33,] -8.090170e-01  5.877853e-01
+## [34,] -8.526402e-01  5.224986e-01
+## [35,] -8.910065e-01  4.539905e-01
+## [36,] -9.238795e-01  3.826834e-01
+## [37,] -9.510565e-01  3.090170e-01
+## [38,] -9.723699e-01  2.334454e-01
+## [39,] -9.876883e-01  1.564345e-01
+## [40,] -9.969173e-01  7.845910e-02
+## [41,] -1.000000e+00  1.224606e-16
+## [42,] -9.969173e-01 -7.845910e-02
+## [43,] -9.876883e-01 -1.564345e-01
+## [44,] -9.723699e-01 -2.334454e-01
+## [45,] -9.510565e-01 -3.090170e-01
+## [46,] -9.238795e-01 -3.826834e-01
+## [47,] -8.910065e-01 -4.539905e-01
+## [48,] -8.526402e-01 -5.224986e-01
+## [49,] -8.090170e-01 -5.877853e-01
+## [50,] -7.604060e-01 -6.494480e-01
+## [51,] -7.071068e-01 -7.071068e-01
+## [52,] -6.494480e-01 -7.604060e-01
+## [53,] -5.877853e-01 -8.090170e-01
+## [54,] -5.224986e-01 -8.526402e-01
+## [55,] -4.539905e-01 -8.910065e-01
+## [56,] -3.826834e-01 -9.238795e-01
+## [57,] -3.090170e-01 -9.510565e-01
+## [58,] -2.334454e-01 -9.723699e-01
+## [59,] -1.564345e-01 -9.876883e-01
+## [60,] -7.845910e-02 -9.969173e-01
+## [61,] -1.836910e-16 -1.000000e+00
+## [62,]  7.845910e-02 -9.969173e-01
+## [63,]  1.564345e-01 -9.876883e-01
+## [64,]  2.334454e-01 -9.723699e-01
+## [65,]  3.090170e-01 -9.510565e-01
+## [66,]  3.826834e-01 -9.238795e-01
+## [67,]  4.539905e-01 -8.910065e-01
+## [68,]  5.224986e-01 -8.526402e-01
+## [69,]  5.877853e-01 -8.090170e-01
+## [70,]  6.494480e-01 -7.604060e-01
+## [71,]  7.071068e-01 -7.071068e-01
+## [72,]  7.604060e-01 -6.494480e-01
+## [73,]  8.090170e-01 -5.877853e-01
+## [74,]  8.526402e-01 -5.224986e-01
+## [75,]  8.910065e-01 -4.539905e-01
+## [76,]  9.238795e-01 -3.826834e-01
+## [77,]  9.510565e-01 -3.090170e-01
+## [78,]  9.723699e-01 -2.334454e-01
+## [79,]  9.876883e-01 -1.564345e-01
+## [80,]  9.969173e-01 -7.845910e-02</code></pre>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="data-to-network.html#cb333-1"></a>l &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">vcount</span>(net.bg), <span class="kw">c</span>(<span class="dv">1</span>, <span class="kw">vcount</span>(net.bg)<span class="op">:</span><span class="dv">2</span>))</span>
+<span id="cb333-2"><a href="data-to-network.html#cb333-2"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>l)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-204-1.png" width="672" /></p>
+<p>This layout is just an example and not very helpful - thankfully
+igraph has a number of built-in layouts, including:</p>
+<p>Randomly placed vertices</p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="data-to-network.html#cb334-1"></a>l &lt;-<span class="st"> </span><span class="kw">layout_randomly</span>(net.bg)</span>
+<span id="cb334-2"><a href="data-to-network.html#cb334-2"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>l)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-205-1.png" width="672" /></p>
+<p>Circle layout</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="data-to-network.html#cb335-1"></a>l &lt;-<span class="st"> </span><span class="kw">layout_in_circle</span>(net.bg)</span>
+<span id="cb335-2"><a href="data-to-network.html#cb335-2"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>l)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-206-1.png" width="672" /></p>
+<p>3D sphere layout</p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="data-to-network.html#cb336-1"></a>l &lt;-<span class="st"> </span><span class="kw">layout_on_sphere</span>(net.bg)</span>
+<span id="cb336-2"><a href="data-to-network.html#cb336-2"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>l)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-207-1.png" width="672" /></p>
+<p>The Fruchterman-Reingold force-directed algorithm
+Nice but slow, most often used in graphs smaller than ~1000 vertices.</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="data-to-network.html#cb337-1"></a>l &lt;-<span class="st"> </span><span class="kw">layout_with_fr</span>(net.bg)</span>
+<span id="cb337-2"><a href="data-to-network.html#cb337-2"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>l)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-208-1.png" width="672" /></p>
+<p>You will also notice that the layout is not deterministic - different runs
+will result in slightly different configurations. Saving the layout in l
+allows us to get the exact same result multiple times.</p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="data-to-network.html#cb338-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb338-2"><a href="data-to-network.html#cb338-2"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>layout_with_fr)</span>
+<span id="cb338-3"><a href="data-to-network.html#cb338-3"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>layout_with_fr)</span>
+<span id="cb338-4"><a href="data-to-network.html#cb338-4"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>l)</span>
+<span id="cb338-5"><a href="data-to-network.html#cb338-5"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>l)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-209-1.png" width="672" /></p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="data-to-network.html#cb339-1"></a><span class="kw">dev.off</span>()</span></code></pre></div>
+<pre><code>## RStudioGD 
+##         2</code></pre>
+<p>By default, the coordinates of the plots are rescaled to the [-1,1] interval
+for both x and y. You can change that with the parameter “rescale=FALSE”
+and rescale your plot manually by multiplying the coordinates by a scalar.
+You can use norm_coords to normalize the plot with the boundaries you want.</p>
+<p>Get the layout coordinates:</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="data-to-network.html#cb341-1"></a>l &lt;-<span class="st"> </span><span class="kw">layout_with_fr</span>(net.bg)</span></code></pre></div>
+<p>Normalize them so that they are in the -1, 1 interval:</p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="data-to-network.html#cb342-1"></a>l &lt;-<span class="st"> </span><span class="kw">norm_coords</span>(l, <span class="dt">ymin=</span><span class="op">-</span><span class="dv">1</span>, <span class="dt">ymax=</span><span class="dv">1</span>, <span class="dt">xmin=</span><span class="op">-</span><span class="dv">1</span>, <span class="dt">xmax=</span><span class="dv">1</span>)</span>
+<span id="cb342-2"><a href="data-to-network.html#cb342-2"></a></span>
+<span id="cb342-3"><a href="data-to-network.html#cb342-3"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb342-4"><a href="data-to-network.html#cb342-4"></a><span class="kw">plot</span>(net.bg, <span class="dt">rescale=</span>F, <span class="dt">layout=</span>l<span class="op">*</span><span class="fl">0.4</span>)</span>
+<span id="cb342-5"><a href="data-to-network.html#cb342-5"></a><span class="kw">plot</span>(net.bg, <span class="dt">rescale=</span>F, <span class="dt">layout=</span>l<span class="op">*</span><span class="fl">0.8</span>)</span>
+<span id="cb342-6"><a href="data-to-network.html#cb342-6"></a><span class="kw">plot</span>(net.bg, <span class="dt">rescale=</span>F, <span class="dt">layout=</span>l<span class="op">*</span><span class="fl">1.2</span>)</span>
+<span id="cb342-7"><a href="data-to-network.html#cb342-7"></a><span class="kw">plot</span>(net.bg, <span class="dt">rescale=</span>F, <span class="dt">layout=</span>l<span class="op">*</span><span class="fl">1.6</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-211-1.png" width="672" /></p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="data-to-network.html#cb343-1"></a><span class="kw">dev.off</span>()</span></code></pre></div>
+<pre><code>## RStudioGD 
+##         2</code></pre>
+<p>Another popular force-directed algorithm that produces nice results for
+connected graphs is Kamada Kawai. Like Fruchterman Reingold, it attempts to
+minimize the energy in a spring system.</p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="data-to-network.html#cb345-1"></a>l &lt;-<span class="st"> </span><span class="kw">layout_with_kk</span>(net.bg)</span>
+<span id="cb345-2"><a href="data-to-network.html#cb345-2"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>l)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-212-1.png" width="672" /></p>
+<p>The LGL algorithm is for large connected graphs. Here you can specify a root -
+the node that will be placed in the middle of the layout.</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="data-to-network.html#cb346-1"></a><span class="kw">plot</span>(net.bg, <span class="dt">layout=</span>layout_with_lgl)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-213-1.png" width="672" /></p>
+<p>By default, igraph uses a layout called layout_nicely which selects
+an appropriate layout algorithm based on the properties of the graph.</p>
+<p>Check out all available layouts in igraph:</p>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="data-to-network.html#cb347-1"></a>?igraph<span class="op">::</span>layout_</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="data-to-network.html#cb348-1"></a>layouts &lt;-<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;^layout_&quot;</span>, <span class="kw">ls</span>(<span class="st">&quot;package:igraph&quot;</span>), <span class="dt">value=</span><span class="ot">TRUE</span>)[<span class="op">-</span><span class="dv">1</span>] </span></code></pre></div>
+<p>Remove layouts that do not apply to our graph.</p>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="data-to-network.html#cb349-1"></a>layouts &lt;-<span class="st"> </span>layouts[<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&quot;bipartite|merge|norm|sugiyama|tree&quot;</span>, layouts)]</span>
+<span id="cb349-2"><a href="data-to-network.html#cb349-2"></a></span>
+<span id="cb349-3"><a href="data-to-network.html#cb349-3"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb349-4"><a href="data-to-network.html#cb349-4"></a></span>
+<span id="cb349-5"><a href="data-to-network.html#cb349-5"></a><span class="cf">for</span> (layout <span class="cf">in</span> layouts) {</span>
+<span id="cb349-6"><a href="data-to-network.html#cb349-6"></a>  <span class="kw">print</span>(layout)</span>
+<span id="cb349-7"><a href="data-to-network.html#cb349-7"></a>  l &lt;-<span class="st"> </span><span class="kw">do.call</span>(layout, <span class="kw">list</span>(net)) </span>
+<span id="cb349-8"><a href="data-to-network.html#cb349-8"></a>  <span class="kw">plot</span>(net, <span class="dt">edge.arrow.mode=</span><span class="dv">0</span>, <span class="dt">layout=</span>l, <span class="dt">main=</span>layout) }</span></code></pre></div>
+<pre><code>## [1] &quot;layout_as_star&quot;</code></pre>
+<pre><code>## [1] &quot;layout_components&quot;</code></pre>
+<pre><code>## [1] &quot;layout_in_circle&quot;</code></pre>
+<pre><code>## [1] &quot;layout_nicely&quot;</code></pre>
+<pre><code>## [1] &quot;layout_on_grid&quot;</code></pre>
+<pre><code>## [1] &quot;layout_on_sphere&quot;</code></pre>
+<pre><code>## [1] &quot;layout_randomly&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_dh&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_drl&quot;</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-216-1.png" width="672" /></p>
+<pre><code>## [1] &quot;layout_with_fr&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_gem&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_graphopt&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_kk&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_lgl&quot;</code></pre>
+<pre><code>## [1] &quot;layout_with_mds&quot;</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-216-2.png" width="672" /></p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="data-to-network.html#cb365-1"></a><span class="kw">plot</span>(net)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-217-1.png" width="672" /></p>
+<p>Notice that this network plot is still not too helpful.
+We can identify the type and size of nodes, but cannot see
+much about the structure since the links we’re examining are so dense.
+One way to approach this is to see if we can sparsify the network.</p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="data-to-network.html#cb366-1"></a><span class="kw">hist</span>(links<span class="op">$</span>weight)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-218-1.png" width="672" /></p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="data-to-network.html#cb367-1"></a><span class="kw">mean</span>(links<span class="op">$</span>weight)</span></code></pre></div>
+<pre><code>## [1] 12.40816</code></pre>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="data-to-network.html#cb369-1"></a><span class="kw">sd</span>(links<span class="op">$</span>weight)</span></code></pre></div>
+<pre><code>## [1] 9.905635</code></pre>
+<p>There are more sophisticated ways to extract the key edges,
+but for the purposes of this excercise we’ll only keep ones
+that have weight higher than the mean for the network.</p>
+<p>We can delete edges using delete_edges(net, edges)</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="data-to-network.html#cb371-1"></a>cut.off &lt;-<span class="st"> </span><span class="kw">mean</span>(links<span class="op">$</span>weight) </span>
+<span id="cb371-2"><a href="data-to-network.html#cb371-2"></a>net.sp &lt;-<span class="st"> </span><span class="kw">delete_edges</span>(net, <span class="kw">E</span>(net)[weight<span class="op">&lt;</span>cut.off])</span>
+<span id="cb371-3"><a href="data-to-network.html#cb371-3"></a><span class="kw">plot</span>(net.sp) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
+<p>Another way to think about this is to plot the two tie types
+(hyperlik &amp; mention) separately:</p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="data-to-network.html#cb372-1"></a><span class="kw">E</span>(net)<span class="op">$</span>width &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb372-2"><a href="data-to-network.html#cb372-2"></a><span class="kw">plot</span>(net, <span class="dt">edge.color=</span><span class="kw">c</span>(<span class="st">&quot;dark red&quot;</span>, <span class="st">&quot;slategrey&quot;</span>)[(<span class="kw">E</span>(net)<span class="op">$</span>type<span class="op">==</span><span class="st">&quot;hyperlink&quot;</span>)<span class="op">+</span><span class="dv">1</span>],</span>
+<span id="cb372-3"><a href="data-to-network.html#cb372-3"></a>      <span class="dt">vertex.color=</span><span class="st">&quot;gray40&quot;</span>, <span class="dt">layout=</span>layout_in_circle)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
+<p>Another way to delete edges:</p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="data-to-network.html#cb373-1"></a>net.m &lt;-<span class="st"> </span>net <span class="op">-</span><span class="st"> </span><span class="kw">E</span>(net)[<span class="kw">E</span>(net)<span class="op">$</span>type<span class="op">==</span><span class="st">&quot;hyperlink&quot;</span>]</span>
+<span id="cb373-2"><a href="data-to-network.html#cb373-2"></a>net.h &lt;-<span class="st"> </span>net <span class="op">-</span><span class="st"> </span><span class="kw">E</span>(net)[<span class="kw">E</span>(net)<span class="op">$</span>type<span class="op">==</span><span class="st">&quot;mention&quot;</span>]</span></code></pre></div>
+<p>Plot the two links separately:</p>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="data-to-network.html#cb374-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb374-2"><a href="data-to-network.html#cb374-2"></a></span>
+<span id="cb374-3"><a href="data-to-network.html#cb374-3"></a><span class="kw">plot</span>(net.h, <span class="dt">vertex.color=</span><span class="st">&quot;orange&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Tie: Hyperlink&quot;</span>)</span>
+<span id="cb374-4"><a href="data-to-network.html#cb374-4"></a><span class="kw">plot</span>(net.m, <span class="dt">vertex.color=</span><span class="st">&quot;lightsteelblue2&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Tie: Mention&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="data-to-network.html#cb375-1"></a><span class="kw">dev.off</span>()</span></code></pre></div>
+<pre><code>## RStudioGD 
+##         2</code></pre>
+<p>Make sure the nodes stay in place in both plots:</p>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="data-to-network.html#cb377-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>))</span>
+<span id="cb377-2"><a href="data-to-network.html#cb377-2"></a></span>
+<span id="cb377-3"><a href="data-to-network.html#cb377-3"></a>l &lt;-<span class="st"> </span><span class="kw">layout_with_fr</span>(net)</span>
+<span id="cb377-4"><a href="data-to-network.html#cb377-4"></a><span class="kw">plot</span>(net.h, <span class="dt">vertex.color=</span><span class="st">&quot;orange&quot;</span>, <span class="dt">layout=</span>l, <span class="dt">main=</span><span class="st">&quot;Tie: Hyperlink&quot;</span>)</span>
+<span id="cb377-5"><a href="data-to-network.html#cb377-5"></a><span class="kw">plot</span>(net.m, <span class="dt">vertex.color=</span><span class="st">&quot;lightsteelblue2&quot;</span>, <span class="dt">layout=</span>l, <span class="dt">main=</span><span class="st">&quot;Tie: Mention&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-225-1.png" width="672" /></p>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="data-to-network.html#cb378-1"></a><span class="kw">dev.off</span>()</span></code></pre></div>
+<pre><code>## RStudioGD 
+##         2</code></pre>
+<p>R and igraph offer interactive plotting capabilities
+(mostly helpful for small networks)</p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="data-to-network.html#cb380-1"></a>tkid &lt;-<span class="st"> </span><span class="kw">tkplot</span>(net) <span class="co">#tkid is the id of the tkplot</span></span>
+<span id="cb380-2"><a href="data-to-network.html#cb380-2"></a>l &lt;-<span class="st"> </span><span class="kw">tkplot.getcoords</span>(tkid) <span class="co"># grab the coordinates from tkplot</span></span>
+<span id="cb380-3"><a href="data-to-network.html#cb380-3"></a><span class="kw">tk_close</span>(tkid, <span class="dt">window.close =</span> T)</span>
+<span id="cb380-4"><a href="data-to-network.html#cb380-4"></a><span class="kw">plot</span>(net, <span class="dt">layout=</span>l)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-226-1.png" width="672" /></p>
+<p>A quick reminder that there are other ways to represent a network:</p>
+<p>Heatmap of the network matrix:</p>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="data-to-network.html#cb381-1"></a>netm &lt;-<span class="st"> </span><span class="kw">get.adjacency</span>(net, <span class="dt">attr=</span><span class="st">&quot;weight&quot;</span>, <span class="dt">sparse=</span>F)</span>
+<span id="cb381-2"><a href="data-to-network.html#cb381-2"></a><span class="kw">colnames</span>(netm) &lt;-<span class="st"> </span><span class="kw">V</span>(net)<span class="op">$</span>media</span>
+<span id="cb381-3"><a href="data-to-network.html#cb381-3"></a><span class="kw">rownames</span>(netm) &lt;-<span class="st"> </span><span class="kw">V</span>(net)<span class="op">$</span>media</span>
+<span id="cb381-4"><a href="data-to-network.html#cb381-4"></a></span>
+<span id="cb381-5"><a href="data-to-network.html#cb381-5"></a>palf &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;dark orange&quot;</span>)) </span>
+<span id="cb381-6"><a href="data-to-network.html#cb381-6"></a><span class="kw">heatmap</span>(netm[,<span class="dv">17</span><span class="op">:</span><span class="dv">1</span>], <span class="dt">Rowv =</span> <span class="ot">NA</span>, <span class="dt">Colv =</span> <span class="ot">NA</span>, <span class="dt">col =</span> <span class="kw">palf</span>(<span class="dv">20</span>), </span>
+<span id="cb381-7"><a href="data-to-network.html#cb381-7"></a>        <span class="dt">scale=</span><span class="st">&quot;none&quot;</span>, <span class="dt">margins=</span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">10</span>) )</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-227-1.png" width="672" /></p>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="data-to-network.html#cb382-1"></a><span class="kw">head</span>(nodes2)</span></code></pre></div>
+<pre><code>##    id   media media.type media.name audience.size
+## 1 s01     NYT          1  Newspaper            20
+## 2 s02    WaPo          1  Newspaper            25
+## 3 s03     WSJ          1  Newspaper            30
+## 4 s04    USAT          1  Newspaper            32
+## 5 s05 LATimes          1  Newspaper            20
+## 6 s06     CNN          2         TV            56</code></pre>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="data-to-network.html#cb384-1"></a><span class="kw">head</span>(links2)</span></code></pre></div>
+<pre><code>##     U01 U02 U03 U04 U05 U06 U07 U08 U09 U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20
+## s01   1   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## s02   0   0   0   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   1
+## s03   0   0   0   0   0   1   1   1   1   0   0   0   0   0   0   0   0   0   0   0
+## s04   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0   0   0   0   0   0
+## s05   0   0   0   0   0   0   0   0   0   0   1   1   1   0   0   0   0   0   0   0
+## s06   0   0   0   0   0   0   0   0   0   0   0   0   1   1   0   0   1   0   0   0</code></pre>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="data-to-network.html#cb386-1"></a>net2</span></code></pre></div>
+<pre><code>## IGRAPH 32a2522 UN-B 30 31 -- 
+## + attr: type (v/l), name (v/c)
+## + edges from 32a2522 (vertex names):
+##  [1] s01--U01 s01--U02 s01--U03 s02--U04 s02--U05 s02--U20 s03--U06 s03--U07 s03--U08 s03--U09 s04--U09 s04--U10 s04--U11 s05--U11 s05--U12 s05--U13
+## [17] s06--U13 s06--U14 s06--U17 s07--U14 s07--U15 s07--U16 s08--U16 s08--U17 s08--U18 s08--U19 s09--U06 s09--U19 s09--U20 s10--U01 s10--U11</code></pre>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="data-to-network.html#cb388-1"></a><span class="kw">plot</span>(net2)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
+<p>This time we will make nodes look different based on their type.</p>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="data-to-network.html#cb389-1"></a><span class="kw">V</span>(net2)<span class="op">$</span>color &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;steel blue&quot;</span>, <span class="st">&quot;orange&quot;</span>)[<span class="kw">V</span>(net2)<span class="op">$</span>type<span class="op">+</span><span class="dv">1</span>]</span>
+<span id="cb389-2"><a href="data-to-network.html#cb389-2"></a><span class="kw">V</span>(net2)<span class="op">$</span>shape &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;square&quot;</span>, <span class="st">&quot;circle&quot;</span>)[<span class="kw">V</span>(net2)<span class="op">$</span>type<span class="op">+</span><span class="dv">1</span>]</span>
+<span id="cb389-3"><a href="data-to-network.html#cb389-3"></a><span class="kw">V</span>(net2)<span class="op">$</span>label &lt;-<span class="st"> &quot;&quot;</span></span>
+<span id="cb389-4"><a href="data-to-network.html#cb389-4"></a><span class="kw">V</span>(net2)<span class="op">$</span>label[<span class="kw">V</span>(net2)<span class="op">$</span>type<span class="op">==</span>F] &lt;-<span class="st"> </span>nodes2<span class="op">$</span>media[<span class="kw">V</span>(net2)<span class="op">$</span>type<span class="op">==</span>F] </span>
+<span id="cb389-5"><a href="data-to-network.html#cb389-5"></a><span class="kw">V</span>(net2)<span class="op">$</span>label.cex=.<span class="dv">6</span></span>
+<span id="cb389-6"><a href="data-to-network.html#cb389-6"></a><span class="kw">V</span>(net2)<span class="op">$</span>label.font=<span class="dv">2</span></span>
+<span id="cb389-7"><a href="data-to-network.html#cb389-7"></a></span>
+<span id="cb389-8"><a href="data-to-network.html#cb389-8"></a><span class="kw">plot</span>(net2, <span class="dt">vertex.label.color=</span><span class="st">&quot;white&quot;</span>, <span class="dt">vertex.size=</span>(<span class="dv">2</span><span class="op">-</span><span class="kw">V</span>(net2)<span class="op">$</span>type)<span class="op">*</span><span class="dv">8</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="data-to-network.html#cb390-1"></a><span class="kw">plot</span>(net2, <span class="dt">vertex.label=</span><span class="ot">NA</span>, <span class="dt">vertex.size=</span><span class="dv">7</span>, <span class="dt">layout=</span>layout_as_bipartite) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-233-1.png" width="672" /></p>
+<p>Using text as nodes:</p>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="data-to-network.html#cb391-1"></a><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb391-2"><a href="data-to-network.html#cb391-2"></a><span class="kw">plot</span>(net2, <span class="dt">vertex.shape=</span><span class="st">&quot;none&quot;</span>, <span class="dt">vertex.label=</span>nodes2<span class="op">$</span>media,</span>
+<span id="cb391-3"><a href="data-to-network.html#cb391-3"></a>     <span class="dt">vertex.label.color=</span><span class="kw">V</span>(net2)<span class="op">$</span>color, <span class="dt">vertex.label.font=</span><span class="dv">2</span>, </span>
+<span id="cb391-4"><a href="data-to-network.html#cb391-4"></a>     <span class="dt">vertex.label.cex=</span>.<span class="dv">95</span>, <span class="dt">edge.color=</span><span class="st">&quot;gray70&quot;</span>,  <span class="dt">edge.width=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-234-1.png" width="672" /></p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="data-to-network.html#cb392-1"></a><span class="kw">dev.off</span>()</span></code></pre></div>
+<pre><code>## RStudioGD 
+##         2</code></pre>
+</div>
+<div id="homework-1---part-3" class="section level2">
+<h2><span class="header-section-number">3.7</span> Homework 1 - part 3</h2>
+<ol style="list-style-type: decimal">
+<li><p>Plot our social network with four different layouts of your choice.</p></li>
+<li><p>Pick an undirected network in <a href="http://networkrepository.com/">NETWORK RRPOSITORY</a> or <a href="https://icon.colorado.edu/#!/">ICON</a> and plot it with a layout of your choice.</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-igraph-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
